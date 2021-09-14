@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/AlarmFullTime.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=AlarmFullTime.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=alarmfulltime.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/AlarmFullTime.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=AlarmFullTime.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=alarmfulltime/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/alarmfulltime.x/bin
+makeDirectory ${TMPDIR}/alarmfulltime/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/alarmfulltime.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/alarmfulltime.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/alarmfulltime.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/alarmfulltime.tar *
 checkReturnCode
 
 # Cleanup
