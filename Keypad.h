@@ -15,8 +15,6 @@
 extern "C" {
 #endif /* end macro __cplusplus */
 
-#define _XTAL_FREQ  8000000L
-
 #define PB6     6
 #define PB5     5
 #define PB4     4
@@ -46,7 +44,7 @@ extern "C" {
 
 void keypad_init (void);
 char keypad_getkey(void);
-unsigned char keypad_findKey();     /* function to find pressed key */
+//unsigned char keypad_findKey();     /* function to find pressed key */
 
 short keypad_read();                //Scan the Keypad
 char decode_character(short a);     //Convert keypad value to character

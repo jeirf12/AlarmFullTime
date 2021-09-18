@@ -9,6 +9,7 @@
 #include "Config.h"
 #include "Pinout.h"
 #include "Lcd.h"
+#include "Keypad.h"
 
 /*
  * Start program
@@ -19,9 +20,9 @@ int main(int argc, char** argv) {
     CNF_SENSOR = OUTPUT;
     while(1){
         LED_RED = ON;
-        MSdelay(500);
+        delayms(500);
         LED_RED = OFF;
-        MSdelay(500);
+        delayms(500);
     }
 }
 
