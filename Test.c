@@ -8,6 +8,7 @@
 #include <xc.h>
 #include "Config.h"
 #include "Pinout.h"
+#include "Lcd.h"
 
 /*
  * Start program
@@ -15,11 +16,12 @@
 int main(int argc, char** argv) {
     OSCCON = 0x72;
     CNF_LED_RED = OUTPUT;
+    CNF_SENSOR = OUTPUT;
     while(1){
         LED_RED = ON;
-        __delay_us(500);
+        MSdelay(500);
         LED_RED = OFF;
-        __delay_us(500);
+        MSdelay(500);
     }
 }
 
