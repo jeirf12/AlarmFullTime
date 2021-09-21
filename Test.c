@@ -1,6 +1,8 @@
-/* 
- * File:   Test.c
- * Author: jhonfer <jruizf@unicauca.edu.co>
+/*
+ * @File   Test.c
+ * @Author jhonfer <jruizf@unicauca.edu.co>
+ * 
+ * @brief main program   
  *
  * Created on 27 April 2021, 15:44
  */
@@ -11,18 +13,23 @@
 #include "Lcd.h"
 #include "Keypad.h"
 
-/*
+/**
  * Start program
+ * @return 
  */
-int main(int argc, char** argv) {
+int main() {
     OSCCON = 0x72;
-    CNF_LED_RED = OUTPUT;
-    CNF_SENSOR = OUTPUT;
+    CNF_LED_GREEN = OUTPUT;
+    /* CNF_SENSOR = OUTPUT; */
     while(1){
-        LED_RED = ON;
+        LED_GREEN = ON;
         delayms(500);
-        LED_RED = OFF;
+        LED_GREEN = OFF;
         delayms(500);
     }
+    LCD_Init();
+    LCD_Clear();
+    LCD_String_xy(2, 0, "key");
+    keypad_init();
 }
 

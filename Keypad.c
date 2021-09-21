@@ -1,6 +1,6 @@
 /* 
- * File:   Keypad.c
- * Author: jhonfer <jruizf@unicauca.edu.co>
+ * @File   Keypad.c
+ * @Author jhonfer <jruizf@unicauca.edu.co>
  *
  * Created on 27 April 2021, 15:44
  */
@@ -8,12 +8,19 @@
 #include <xc.h>
 #include "Keypad.h"
 
+/**
+ * start keypad
+ */
 void keypad_init(void){
   PTECLADO &= ~(1<<PB0) & ~(1<<PB1) & ~(1<<PB2) & ~(1<<PB3);   //   FILAS  - SALIDA
   PTECLADO |= (1<<PB4) | (1<<PB5) | (1<<PB6);       // COLUMNAS - ENTRADA
   INTCON2bits.RBPU = 0;                                        //   PORTB  pull-ups are enabled by individual port latch values 
 }
 
+/**
+ *  find key 
+ * @return 
+ */
 char keypad_getkey(void){
 
   char letras[4][3]={  {'1','2','3'},
@@ -59,7 +66,10 @@ char keypad_getkey(void){
   return valor;
 }
 
-//Scan the Keypad
+/**
+ * Scan the Keypad
+ * @return 
+ */
 short keypad_read(){
   LATDbits.LATD3 = 1;
   delayms(10);
@@ -116,7 +126,11 @@ short keypad_read(){
   return 0;
 }
 
-//Convert keypad value to character
+/**
+ * Convert keypad value to character
+ * @param a
+ * @return 
+ */
 char decode_character(short a){
   switch(a){
     case 1: return '1';

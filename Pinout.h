@@ -1,6 +1,6 @@
 /* 
- * File:   Pinout.h
- * Author: jhonfer <jruizf@unicauca.edu.co>
+ * @File   Pinout.h
+ * @Author jhonfer <jruizf@unicauca.edu.co>
  *
  * Created on 14 September 2021, 16:37
  */
@@ -14,10 +14,10 @@
 extern "C" {
 #endif /* end macro __cplusplus */
 
-#define SENSOR LATA0
-#define CNF_SENSOR TRISA0
-#define LED_RED LATA1
-#define CNF_LED_RED TRISA1
+#define SENSOR LATB2
+#define CNF_SENSOR TRISB2
+#define LED_GREEN LATB3
+#define CNF_LED_GREEN TRISB3
 
 #define ON 1
 #define OFF 0
