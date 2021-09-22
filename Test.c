@@ -7,6 +7,7 @@
  * Created on 27 April 2021, 15:44
  */
 #include <xc.h>
+#include<string.h>
 #include "Config.h"
 #include "Pinout.h"
 #include "Lcd.h"
@@ -17,26 +18,28 @@
  * @return 
  */
 int main() {
-    char key;
+    unsigned char key;
     OSCCON = 0x72;
     LCD_Init();
     LCD_String_xy(1, 0, "Press Password");
     LCD_Command(0xC0);
     keypad_init();
-    while(1){
-        do{             
-            key = keyfind();            /* find a pressed key */
-            LCD_Char('*');                  /* display pressed key on LCD16x2 */
-            if(password[idx] == key) {
-               pass_user[idx++];
-            }
-            if(key == 'o' && idx < 4){
-                LCD_Clear();
-                LCD_String_xy(1, 0, "Press Password");
-                LCD_Command(0xC0);
-            }
-        }while(idx < 5);
-        LCD_Clear(); 
-        LCD_String("Welcome To House");     
+    while (1) {
+        do {
+            key = keyfind(); /* find a pressed key */
+            LCD_Char('*'); /* display pressed key on LCD16x2 */
+            if (key == 'o') {
+                if (strcmp(&password, &pass_user) != 0) {
+                    LCD_Clear();
+                    LCD_String_xy(1, 0, "Press Password");
+                    LCD_Command(0xC0);
+                    idx = -1;
+                    memset(pass_user, 0, 5);
+                } else break;
+            } else pass_user[idx] = key;
+            idx++;
+        } while (1);
+        LCD_Clear();
+        LCD_String("**Welcome Home**");
     }
 }

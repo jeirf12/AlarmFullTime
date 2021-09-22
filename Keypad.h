@@ -7,6 +7,7 @@
 
 #include <pic18f4550.h>
 #include "Lcd.h"
+#include <stdbool.h>
 
 #ifndef KEYPAD_H
 #define KEYPAD_H
@@ -42,13 +43,14 @@ extern "C" {
 #define read_port PORTB             /* PORT register to read data of port */
 #define Direction_Port TRISB
 
-unsigned char col_loc, rowloc, temp_col;
+
+unsigned char col_loc, *rowloc, temp_col, port;
 char letras[4][3]={  {'1','2','3'},
                        {'4','5','6'},
                        {'7','8','9'},
                        {'c','0','o'}};
 
-unsigned char password[5] ={'2','0','2','1','o'};
+unsigned char password[5] = "2021";
 unsigned char pass_user[5];
 unsigned char idx = 0;
 
@@ -62,6 +64,14 @@ void keypad_init (void);
  * @return key keypad
  */
 unsigned char keyfind(void);        /* function to find pressed key */ 
+
+/**
+ * @brief wait key while they press it
+ * @param port
+ * @param row
+ * @return true or false key row selected
+ */
+bool waitKeyRow(unsigned char port, unsigned char row);
 
 #ifdef __cplusplus
 }
