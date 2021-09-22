@@ -19,6 +19,7 @@ extern "C" {
 #define LCD_Port TRISC           /* Define LCD command port direction register */
 #define EN LATC2                            /* Define Enable signal pin */
 #define RS LATC1    
+#define RW LATC0							/* Define Read/Write signal pin */
 
 void LCD_Init();
 void LCD_Command(unsigned char);

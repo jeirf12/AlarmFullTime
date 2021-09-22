@@ -34,13 +34,23 @@ extern "C" {
 #define COL2   PB5
 #define COL3   PB6
 
-#define PTECLADO  TRISD
-#define FILAS     LATD
-#define COLUMNAS  PORTD
+#define PTECLADO  TRISB
+#define FILAS     LATB
+#define COLUMNAS  PORTB
 
-#define write_port LATD             /* latch register to write data on port */
-#define read_port PORTD             /* PORT register to read data of port */
-#define Direction_Port TRISD
+#define write_port LATB             /* latch register to write data on port */
+#define read_port PORTB             /* PORT register to read data of port */
+#define Direction_Port TRISB
+
+unsigned char col_loc, rowloc, temp_col;
+char letras[4][3]={  {'1','2','3'},
+                       {'4','5','6'},
+                       {'7','8','9'},
+                       {'c','0','o'}};
+
+unsigned char password[5] ={'2','0','2','1','o'};
+unsigned char pass_user[5];
+unsigned char idx = 0;
 
 /**
  * @brief start keypad
@@ -51,21 +61,7 @@ void keypad_init (void);
  * @brief get keypad key
  * @return key keypad
  */
-char keypad_getkey(void);
-//unsigned char keypad_findKey();     /* function to find pressed key */
-
-/**
- * @brief scan key in keypad
- * @return key value
- */
-short keypad_read();                //Scan the Keypad
-
-/**
- * @brief convert key value to character name
- * @param a send keypad value
- * @return key name
- */
-char decode_character(short a);     //Convert keypad value to character
+unsigned char keyfind(void);        /* function to find pressed key */ 
 
 #ifdef __cplusplus
 }

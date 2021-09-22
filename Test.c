@@ -6,7 +6,6 @@
  *
  * Created on 27 April 2021, 15:44
  */
-
 #include <xc.h>
 #include "Config.h"
 #include "Pinout.h"
@@ -18,18 +17,26 @@
  * @return 
  */
 int main() {
+    char key;
     OSCCON = 0x72;
-    CNF_LED_GREEN = OUTPUT;
-    /* CNF_SENSOR = OUTPUT; */
-    while(1){
-        LED_GREEN = ON;
-        delayms(500);
-        LED_GREEN = OFF;
-        delayms(500);
-    }
     LCD_Init();
-    LCD_Clear();
-    LCD_String_xy(2, 0, "key");
+    LCD_String_xy(1, 0, "Press Password");
+    LCD_Command(0xC0);
     keypad_init();
+    while(1){
+        do{             
+            key = keyfind();            /* find a pressed key */
+            LCD_Char('*');                  /* display pressed key on LCD16x2 */
+            if(password[idx] == key) {
+               pass_user[idx++];
+            }
+            if(key == 'o' && idx < 4){
+                LCD_Clear();
+                LCD_String_xy(1, 0, "Press Password");
+                LCD_Command(0xC0);
+            }
+        }while(idx < 5);
+        LCD_Clear(); 
+        LCD_String("Welcome To House");     
+    }
 }
-
