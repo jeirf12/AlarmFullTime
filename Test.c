@@ -12,33 +12,42 @@
 #include "Pinout.h"
 #include "Lcd.h"
 #include "Keypad.h"
+#include "MemoryEEPROM.h"
 
 /**
  * Start program
  * @return 
  */
-int main() {
+int main(){
+//    initMemory();
+//    writeData(0, 2);
+//    writeData(1, 0);
+//    writeData(2, 2);
+//    writeData(3, 1);
+//    while(1){
+//        LATD = readData(3);
+//    }
     unsigned char key;
     OSCCON = 0x72;
     LCD_Init();
+    //keypad_init();
     LCD_String_xy(1, 0, "Press Password");
     LCD_Command(0xC0);
-    keypad_init();
-    while (1) {
-        do {
+    while(1){
+        do{
             key = keyfind(); /* find a pressed key */
             LCD_Char('*'); /* display pressed key on LCD16x2 */
-            if (key == 'o') {
-                if (strcmp(&password, &pass_user) != 0) {
+            if(key == 'o'){
+                if(strcmp(&password, &pass_user) != 0){
                     LCD_Clear();
                     LCD_String_xy(1, 0, "Press Password");
                     LCD_Command(0xC0);
                     idx = -1;
                     memset(pass_user, 0, 5);
-                } else break;
-            } else pass_user[idx] = key;
+                }else break;
+            }else pass_user[idx] = key;
             idx++;
-        } while (1);
+        }while(1);
         LCD_Clear();
         LCD_String("**Welcome Home**");
     }

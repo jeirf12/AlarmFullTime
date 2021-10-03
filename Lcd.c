@@ -72,7 +72,7 @@ void LCD_Init(void){
  * @param str chain write
  */
 void LCD_String(const char *str){
-  while((*str)!=0){                          /* Send each char of string till the NULL */
+  while((*str)!= 0){                          /* Send each char of string till the NULL */
     LCD_Char(*str);                          /* Call LCD data write */
     str++;
   }
@@ -84,9 +84,9 @@ void LCD_String(const char *str){
  * @param pos send column show
  * @param str send chain show
  */
-void LCD_String_xy(char row, char pos,const char *str){
-  char location=0;
-  if(row<=1){
+void LCD_String_xy(char row, char pos, const char *str){
+  char location = 0;
+  if(row <= 1){
     location = (0x80) | ((pos) & 0x0f);      /*Print message on 1st row and desired location*/
     LCD_Command(location);
   }

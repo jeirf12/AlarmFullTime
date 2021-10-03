@@ -8,6 +8,7 @@
       <itemPath>Pinout.h</itemPath>
       <itemPath>Lcd.h</itemPath>
       <itemPath>Keypad.h</itemPath>
+      <itemPath>MemoryEEPROM.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -19,6 +20,7 @@
       <itemPath>Test.c</itemPath>
       <itemPath>Lcd.c</itemPath>
       <itemPath>Keypad.c</itemPath>
+      <itemPath>MemoryEEPROM.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

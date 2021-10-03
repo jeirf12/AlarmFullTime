@@ -15,18 +15,17 @@
 extern "C" {
 #endif /* end macro __cplusplus */
 
-#define LCD_Data LATC              /* Define LCD data port direction */
-#define LCD_Port TRISC           /* Define LCD command port direction register */
-#define EN LATC2                            /* Define Enable signal pin */
-#define RS LATC1    
-#define RW LATC0							/* Define Read/Write signal pin */
+#define LCD_Data LATD              /* Define LCD data port direction */
+#define LCD_Port TRISD           /* Define LCD command port direction register */
+#define EN LATD3                            /* Define Enable signal pin */
+#define RS LATD2
 
 void LCD_Init();
 void LCD_Command(unsigned char);
 void LCD_Char(unsigned char x);
 void LCD_String(const char *);
 void delayms(unsigned int);
-void LCD_String_xy(char ,char ,const char*);
+void LCD_String_xy(char, char, const char*);
 void LCD_Clear();
     
 #ifdef __cplusplus
