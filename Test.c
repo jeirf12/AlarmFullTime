@@ -30,25 +30,24 @@ int main(){
     unsigned char key;
     OSCCON = 0x72;
     LCD_Init();
-    //keypad_init();
     LCD_String_xy(1, 0, "Press Password");
     LCD_Command(0xC0);
     while(1){
-        do{
+//        do{
             key = keyfind(); /* find a pressed key */
-            LCD_Char('*'); /* display pressed key on LCD16x2 */
-            if(key == 'o'){
-                if(strcmp(&password, &pass_user) != 0){
-                    LCD_Clear();
-                    LCD_String_xy(1, 0, "Press Password");
-                    LCD_Command(0xC0);
-                    idx = -1;
-                    memset(pass_user, 0, 5);
-                }else break;
-            }else pass_user[idx] = key;
-            idx++;
-        }while(1);
-        LCD_Clear();
-        LCD_String("**Welcome Home**");
+            LCD_Char(key); /* display pressed key on LCD16x2 */
+//            if(key == 'o'){
+//                if(strcmp(&password, &pass_user) != 0){
+//                    LCD_Clear();
+//                    LCD_String_xy(1, 0, "Press Password");
+//                    LCD_Command(0xC0);
+//                    idx = -1;
+//                    memset(pass_user, 0, 5);
+//                }else break;
+//            }else pass_user[idx] = key;
+//            idx++;
+//        }while(1);
+//        LCD_Clear();
+//        LCD_String("**Welcome Home**");
     }
 }
