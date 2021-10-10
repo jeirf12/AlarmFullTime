@@ -1,13 +1,13 @@
 /* 
  * @File   Keypad.c
  * @Author jhonfer <jruizf@unicauca.edu.co>
+ * @Author: Yaquelin Gomez
  *
  * Created on 27 April 2021, 15:44
  */
 
 #include <xc.h>
 #include "Keypad.h"
-
 
 /**
  * @brief get keypad key
@@ -16,8 +16,7 @@
 unsigned char keyfind(void){
     Direction_Port_A = 0x0f;
     Direction_Port_C = 0xf0;         
-    write_port = 0xf0;              /*Make lower nibble as low(Gnd) and Higher nibble as High(Vcc)*/  
-    
+    write_port = 0xf0;              /*Make lower nibble as low(Gnd) and Higher nibble as High(Vcc)*/     
     do{
         do{
             col_loc = read_port & 0x0f; /*mask port with f0 and copy it to col_loc variable*/   
@@ -25,7 +24,6 @@ unsigned char keyfind(void){
         delayms(20);
         col_loc = read_port & 0x0f;    /*mask port with f0 and copy it to col_loc variable*/  
     }while(col_loc == 0x0f); 
-    
     while(1){
         if(waitKeyRow(0xf1, 0)) break;
         if(waitKeyRow(0xf2, 1)) break;
@@ -39,6 +37,12 @@ unsigned char keyfind(void){
     return 'e';
 }
 
+/**
+ * @brief wait key while they press it
+ * @param port
+ * @param row
+ * @return true or false key row selected
+ */
 unsigned char waitKeyRow(unsigned char port, unsigned char row){
     write_port = port;                  /*make Row0(D3) Gnd and keep other row(D0-D2) high*/
     temp_col = read_port & 0x0f;         /*Read Status of PORT for finding Row*/

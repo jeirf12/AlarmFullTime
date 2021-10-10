@@ -1,6 +1,7 @@
 /* 
  * @File   Pinout.h
  * @Author jhonfer <jruizf@unicauca.edu.co>
+ * @Author: Yaquelin Gomez
  *
  * Created on 14 September 2021, 16:37
  */
@@ -15,8 +16,8 @@ extern "C" {
 #endif /* end macro __cplusplus */
 
 #define BUZZER RE0
-#define MOTION_DETECTION RB2
-#define CNF_SENSOR TRISB2
+#define MOTION_DETECTION RB7
+#define CNF_SENSOR TRISB7
 #define LED_YELLOW LATB6
 #define CNF_LED_YELLOW TRISB6
 

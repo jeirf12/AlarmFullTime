@@ -1,6 +1,7 @@
 /* 
  * @File   Keypad.h
  * @Author jhonfer <jruizf@unicauca.edu.co>
+ * @Author: Yaquelin Gomez
  *
  * Created on 14 September 2021, 16:37
  */
@@ -43,13 +44,11 @@ extern "C" {
 #define Direction_Port_A TRISA
 #define Direction_Port_C TRISC
 
-
 unsigned char col_loc, *rowloc, temp_col;
 unsigned char keypad[4][3]= {'1','2','3',
                              '4','5','6',
                              '7','8','9',
                              'c','0','o'};
-
 unsigned char password[5] = "2021";
 unsigned char pass_user[5];
 unsigned char idx = 0;

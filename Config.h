@@ -1,6 +1,7 @@
 /* 
  * @File   Config.h
  * @Author jhonfer <jruizf@unicauca.edu.co>
+ * @Author: Yaquelin Gomez
  *
  * Created on 14 September 2021, 15:47
  */
@@ -13,8 +14,6 @@ extern "C" {
 #endif /* end macro __cplusplus */
 
 // PIC18F4550 Configuration Bit Settings
-
-// 'C' source line config statements
  
 // CONFIG1L
 #pragma config PLLDIV = 1       // PLL Prescaler Selection bits (No prescale (4 MHz oscillator input drives PLL directly))

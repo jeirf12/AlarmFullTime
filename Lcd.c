@@ -1,6 +1,7 @@
 /* 
  * @File   Lcd.c
  * @Author jhonfer <jruizf@unicauca.edu.co>
+ * @Author: Yaquelin Gomez
  *
  * Created on 27 April 2021, 15:44
  */

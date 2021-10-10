@@ -1,6 +1,7 @@
 /* 
  * @File   MemoryEEPROM.h
  * @Author jhonfer <jruizf@unicauca.edu.co>
+ * @Author: Yaquelin Gomez
  *
  * Created on September 22, 2021, 5:02 PM
  */
@@ -14,7 +15,11 @@
 extern "C" {
 #endif
 
+/**
+ * Start memory
+ */
 void initMemory();
+
 /**
  * @brief write data in memory eeprom of pic
  * @param directionMemory
@@ -40,7 +45,7 @@ void writeMemoryString(unsigned char directionMemory, const char *data);
  * Read string complete with position initial and position end
  * @param directionMemoryInitial
  * @param directionMemoryEnd
- * @param data
+ * @return chain complete
  */
 unsigned char ReadMemoryString(unsigned char directionMemoryInitial,unsigned char directionMemoryEnd);
 
@@ -49,4 +54,3 @@ unsigned char ReadMemoryString(unsigned char directionMemoryInitial,unsigned cha
 #endif
 
 #endif	/* MEMORYEEPROM_H */
-
