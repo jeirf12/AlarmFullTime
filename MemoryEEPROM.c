@@ -36,3 +36,21 @@ unsigned char readData(unsigned char directionMemory){
     EECON1bits.RD = 1;  /* start read */
     return EEDATA;
 }
+
+void writeMemoryString(unsigned char directionMemory, const char *data){
+    unsigned char counter = directionMemory;
+    while(*data != 0){
+        writeData(counter, *data);
+        counter++;
+        data++;
+    }  
+}
+
+unsigned char ReadMemoryString(unsigned char directionMemoryInitial,unsigned char directionMemoryEnd){
+    unsigned char counter = directionMemoryInitial, chain[5];
+    while(counter <= directionMemoryEnd){
+        strcat(chain, readData(counter));
+        counter++;
+    }
+    return chain;
+}

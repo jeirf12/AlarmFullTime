@@ -14,10 +14,11 @@
 extern "C" {
 #endif /* end macro __cplusplus */
 
-#define SENSOR LATB2
+#define BUZZER RE0
+#define MOTION_DETECTION RB2
 #define CNF_SENSOR TRISB2
-#define LED_GREEN LATB3
-#define CNF_LED_GREEN TRISB3
+#define LED_YELLOW LATB6
+#define CNF_LED_YELLOW TRISB6
 
 #define ON 1
 #define OFF 0
