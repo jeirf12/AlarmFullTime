@@ -16,29 +16,6 @@
 extern "C" {
 #endif /* end macro __cplusplus */
 
-#define PA6     6
-#define PA5     5
-#define PA4     4
-#define PA3     3
-#define PA2     2
-#define PA1     1
-#define PA0     0
-
-/* ROW-OUTPUT */
-#define ROW1   PA0
-#define ROW2   PA1
-#define ROW3   PA2
-#define ROW4   PA3
-
-/* COLUMNS-INPUT */
-#define COL1   PA4
-#define COL2   PA5
-#define COL3   PA6
-
-#define PTECLADO  TRISA
-#define FILAS     LATA
-#define COLUMNAS  PORTA
-
 #define write_port LATC             /* latch register to write data on port */
 #define read_port PORTA             /* PORT register to read data of port */
 #define Direction_Port_A TRISA
