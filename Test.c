@@ -183,10 +183,6 @@ void callRtc() {
  * Interrupt timer, sensor
  */
 void __interrupt() ISR_TIMER_0(void) {
-    if (INTCON2bits.INTEDG2) {
-        sensorMotion();
-        INTCON2bits.INTEDG2 = 0;
-    }
     if (INTCONbits.TMR0IE && INTCONbits.TMR0IF) {
         TMR0H = 0xd9 >> 8; //Registro TMR1 =  55535 0xd8
         TMR0L = 0xab & 0xff; // 0xEF       
@@ -201,15 +197,15 @@ void __interrupt() ISR_TIMER_0(void) {
 void timerInit() {
     //Deshabilitar la Interrupción GLOBAL (para evitar Interrupciones falsas).
     INTCONbits.GIE = 0; //Deshabilita la interrupción global
-    T0CONbits.T0CS = 0; //Timer1 en modo 8bits
-    T0CONbits.PSA = 0; //Timer1 reloj interno = Fosc÷4
-    T0CONbits.T08BIT = 0;
-    T0CONbits.T0PS = 0b100; //Timer1 prescaler = 2       
+    T0CONbits.T0CS = 0; //Timer0 reloj interno = Fosc÷4
+    T0CONbits.PSA = 0; //Habilita el modo timer
+    T0CONbits.T08BIT = 0; //Timer0 en modo 16bits
+    T0CONbits.T0PS = 0b100; //Timer0 prescaler = 32       
     TMR0H = 0xd9 >> 8; //Registro TMR1 =  55535 0xd8
     TMR0L = 0xab & 0xff; // 0xEF
     T0CONbits.TMR0ON = 1; //Timer0 ON
-    INTCONbits.TMR0IF = 0; //Borra flag de TIMER1
-    INTCONbits.TMR0IE = 1; //Habilita interrupción TIMER1
+    INTCONbits.TMR0IF = 0; //Borra flag de TIMER0
+    INTCONbits.TMR0IE = 1; //Habilita interrupción TIMER0
     //INTCONbits.PEIE = 1; //Habilitara interrupción periféricas
     INTCONbits.GIE = 1; //Habilita interrupción global
 }
@@ -218,9 +214,10 @@ void timerInit() {
  * init interrupt sensor motion
  */
 void intInit() {
-    INTCON3bits.INT2E = 1; //  Habilita interrupcion Externa INT0.
+    INTCONbits.GIE = 0; //Deshabilita la interrupción global
+    INTCON3bits.INT2E = 1; //  Habilita interrupcion Externa INT2.
     INTCON2bits.INTEDG0 = 1; //  Interrupcion por flanco de bajada.
-    INTCON3bits.INT2IF = 0; //  Borra el flag de INT0IF.
+    INTCON3bits.INT2IF = 0; //  Borra el flag de INT2IF.
     RCONbits.IPEN = 0; //  Deshabilita las Interrupciones de Prioridad.
     INTCONbits.PEIE = 1; //  Habilita interrupciones PERIFERICAS.
     INTCONbits.GIE = 1; //  Habilita Interrupcion GLOBAL.

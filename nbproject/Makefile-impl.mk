@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=AlarmFullTime
+PROJECTNAME=AlarmFullTime-main
 
 # Active Configuration
 DEFAULTCONF=default
