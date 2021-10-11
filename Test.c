@@ -37,7 +37,7 @@ int main() {
     unsigned char flag;
     initComponentsMain();
     while (1) {
-        statusDoorWindows(1);
+        statusDoorWindows(0);
         flag = login();
         if (flag) {
             startSystem();
@@ -54,9 +54,10 @@ int main() {
 void startSystem() {
     LCD_Clear();
     LCD_String_xy(2, 2, "**Welcome Home**");
+    LCD_String_xy(3, 2, "Alarm Active");
     delayms(100);
     LCD_Clear();
-    statusDoorWindows(0);
+    statusDoorWindows(1);
     intInit();
     timerInit();
     delayms(1000);
@@ -117,7 +118,7 @@ unsigned char login() {
             if (key == 'o') {
                 if (strcmp(&password, &pass_user) != 0) {
                     LCD_Clear();
-                    statusDoorWindows(1);
+                    statusDoorWindows(0);
                     LCD_String_xy(2, 2, "Press Password");
                     LCD_Command(0x94);
                     idx = -1;
