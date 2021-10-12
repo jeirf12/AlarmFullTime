@@ -54,7 +54,7 @@ int main() {
 void startSystem() {
     LCD_Clear();
     LCD_String_xy(2, 2, "**Welcome Home**");
-    LCD_String_xy(3, 2, "Alarm Active");
+    LCD_String_xy(3, 3, "Alarm Active");
     delayms(100);
     LCD_Clear();
     statusDoorWindows(1);
@@ -70,6 +70,7 @@ void showInvalidSession() {
     LCD_Clear();
     LCD_String_xy(2, 0, "Exceeded the number");
     LCD_String_xy(3, 2, "of attempts");
+    delayms(100);
     LCD_Clear();
     LCD_String_xy(2, 0, "wait 10 seconds");
     delayms(10000);
